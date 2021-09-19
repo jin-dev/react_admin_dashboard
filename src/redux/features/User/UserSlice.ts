@@ -47,7 +47,7 @@ export const loginUser = createAsyncThunk(
         alert(data.msg);
       }
       return thunkAPI.rejectWithValue(data);
-    } catch (e) {
+    } catch (e : any) {
       console.log('Error', e.response.data);
       thunkAPI.rejectWithValue(e.response.data);
     }
@@ -72,7 +72,7 @@ export const logoutUser = createAsyncThunk('user/logout', async () => {
       alert(data.msg);
     }
     // return thunkAPI(data);
-  } catch (e) {
+  } catch (e : any) {
     console.log('Error', e.response.data);
     // thunkAPI.rejectWithValue(e.response.data);
   }

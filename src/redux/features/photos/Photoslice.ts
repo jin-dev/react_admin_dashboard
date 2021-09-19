@@ -51,7 +51,7 @@ export const getPhotos = (): AppThunk => {
       );
       dispatch(setLoading(false));
       dispatch(setPhotos(res.data));
-    } catch (error) {
+    } catch (error :  any) {
       dispatch(setErrors(error.message));
       dispatch(setLoading(false));
     }
