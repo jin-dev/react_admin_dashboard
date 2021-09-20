@@ -1,9 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
 import './scss/style.scss';
-import { photoSelector, getPhotos } from './redux/features/photos/Photoslice';
+import { photoSelector } from './redux/features/photos/Photoslice';
 import { useSelector, useDispatch } from 'react-redux';
-import { userSelector } from '../src/redux/features/User/UserSlice';
 import Loading from './components/Loading/Loading';
 
 // Containers

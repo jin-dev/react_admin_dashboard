@@ -39,21 +39,4 @@ export default photosSlice.reducer;
 export const photoSelector = (state: { photosStore: PhotoState }) =>
   state.photosStore;
 
-export const getPhotos = (): AppThunk => {
-  return async (dispatch : any)  => {
-    dispatch(setLoading(true));
-    try {
-      const baseURL: string = "https://api.nasa.gov/planetary/apod";
-      // your apiKey should ideally be in a .env file
-      const apiKey = "DE8fsud7knGnE2BZLsKkookQDDZlaIz9YXY6wwpO";
-      const res = await axios.get(
-        `${baseURL}?api_key=${apiKey}&start_date=2020-05-07&end_date=2020-05-09`
-      );
-      dispatch(setLoading(false));
-      dispatch(setPhotos(res.data));
-    } catch (error :  any) {
-      dispatch(setErrors(error.message));
-      dispatch(setLoading(false));
-    }
-  };
-};
+

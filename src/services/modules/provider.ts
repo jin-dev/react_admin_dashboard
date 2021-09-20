@@ -4,8 +4,6 @@ import { handleResponse, handleError } from './response';
 // my sample BASE URL
 const BASE_URL = 'api/v1';
 
-// const BASE_URL_ADV = 'https://reqres.in/api';
-
 const requestHeader = {
 	headers: { 'X-Custom-Header': 'value' },
 };

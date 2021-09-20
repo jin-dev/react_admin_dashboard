@@ -126,8 +126,7 @@ function SearchBox(props: Props) {
             )
           );
         case 'selectInput':
-          //국가 검색
-          // item : { label:'국적' keyName:'countryId',type:'selectInput' , datalist :[]}
+        
           return (
             <Select
               name={item.keyName}

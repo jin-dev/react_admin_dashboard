@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  userSelector,
-  logoutUser,
-  clearState,
-} from 'redux/features/User/UserSlice';
+
 import Loader from 'react-loader-spinner';
 import { useHistory } from 'react-router-dom';
 // import {clearState} fromUn
@@ -38,26 +34,7 @@ const TheHeader = () => {
   const [historyData, setSearchData]: any = useHistorySave();
 
   const dispatch = useDispatch();
-  const { isFetching, isError }: any = useSelector(userSelector);
-  /* useEffect(() => {
-    dispatch(fetchUserBytoken({ token: sessionStorage.getItem('token') }));
-  }, []);
-*/
-  const { username, email }: any = useSelector(userSelector);
-
-  useEffect(() => {
-    if (isError) {
-      // dispatch(clearState());
-      dispatch(logoutUser());
-      history.push('/login');
-    }
-  }, [isError]);
-  const onLogOut = () => {
-    dispatch(logoutUser());
-    // sessionStorage.clear();
-    // history.push('/login');
-  };
-
+ 
   return (
     <CHeader className="header light-theme">
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
@@ -76,9 +53,7 @@ const TheHeader = () => {
               <strong>{historyData?.type} &#128515;</strong>
             </span>
           </div>
-          <CButton color="info" className="mx-0 logout-btn" onClick={onLogOut}>
-            Log out
-          </CButton>
+      
         </div>
       </CSubheader>
     </CHeader>

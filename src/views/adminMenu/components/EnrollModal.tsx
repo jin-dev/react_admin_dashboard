@@ -133,6 +133,7 @@ export default function EnrollModal({
                                         type="input"
                                         id="username"
                                         name="username"
+                                        placeholder="Plase enter your name"
                                         onChange={(e : any) => setUserData({
                                             ...userData,
                                             ['username'] :  e.target.value,
@@ -143,43 +144,26 @@ export default function EnrollModal({
 
                             <CFormGroup row>
                                 <CCol md="3">
-                                    <CLabel htmlFor="user-name">Performance Rating</CLabel>
+                                    <CLabel htmlFor="e-mail">e-mail</CLabel>
                                 </CCol>
                                 <CCol xs="12" md="9">
-
-                                    <Rating
+                                    <CInput
                                         innerRef={register}
-                                        name="rating"
-                                        value={rating}
-                                        onChange={(event: any, newValue: any) => {
-                                            setRating(newValue);
-                                        }}
+                                        value = {userData?.email}
+                                        type="input"
+                                        id="email"
+                                        name="email"
+                                        placeholder="Enter your email"
+                                        onChange={(e : any) => setUserData({
+                                            ...userData,
+                                            ['email'] :  e.target.value,
+                                        }) }
                                     />
-
-
                                 </CCol>
                             </CFormGroup>
 
-                            <CFormGroup row>
-                                <CCol md="3">
-                                    <CLabel htmlFor="user-name">Permission</CLabel>
-                                </CCol>
-                                <CCol xs="12" md="9">
-
-
-                                    <CSwitch
-                                        name="permission"
-                                        //innerRef={register}
-                                        size=""
-                                        color={'primary'}
-                                        variant="3d"
-                                        checked={permission}
-                                        onChange={(e: any) => setPermission(e?.target?.checked)}
-
-                                    />
-
-                                </CCol>
-                            </CFormGroup>
+                          
+                            
 
 
 

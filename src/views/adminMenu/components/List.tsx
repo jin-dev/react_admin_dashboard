@@ -16,10 +16,9 @@ const List = ({ searchData, subURL, gubun, type, ...props }: any) => {
 
       if (!inputs[key]) continue;
     
+      result[key] = inputs[key];
     }
     
-    result['orderby'] = 'desc';
-   
 
     setQuery(result);
   }, []);

@@ -57,14 +57,9 @@ const ListTable = ({
 
   const getTableList = async () => {
     setLoading(true);
+    console.log("The query :", query);
     try {
-      const data = await apiProvider.get(subURL, {
-        gubun: gubun,
-        type: type,
-        ...query,
-        offset,
-        limit,
-      });
+      const data = await apiProvider.get(`${subURL}${query.id == null ? "" : query.id }`,);
 
       //health Check --> if 900 --> log out
 
@@ -80,23 +75,13 @@ const ListTable = ({
           key: 'username'
         },
         {
-          value: 'Performance Rate',
-          key: 'rating',
+          value: 'E-mail',
+          key: 'email',
         },
         {
-          value: 'Permission',
-          key: 'permission'
+          value: 'Action',
+          key: 'deleteBtn'
         },
-        {
-          value: 'update',
-          key: 'updateBtn',
-        },
-
-        {
-          value: 'Deletion',
-          key: 'deleteBtn',
-        },
-
       )
 
       if (customColumnEntries && Array.isArray(customColumnEntries)) {
@@ -125,44 +110,8 @@ const ListTable = ({
           };
         }
 
-        if (data.key === 'rating') {
-          return {
-            selector: data.key,
-            name: data.value,
-            maxWidth: '180px',
-            cell: (props: any) => (
-              <Rating
-                name="simple-controlled"
-                value={props?.rating}
-                readOnly
-              />
-            )
-          };
-        }
-
-        if (data.key === 'permission') {
-          return {
-            selector: data.key,
-            name: data.value,
-            maxWidth: '180px',
-            cell: (props: any) => (
-              <div> {props?.permission === 1 ? 'yes' : 'no'} </div>
-            )
-          };
-        }
-
-        if (data.key === 'updateBtn') {
-          return {
-            selector: data.key,
-            name: data.value,
-            maxWidth: '20px',
-            cell: (props: any) => (
-              <CUpdateBtn onClick={() => openModal(props)}>
-                Update
-              </CUpdateBtn>
-            )
-          };
-        }
+    
+       
 
         if (data.key === 'deleteBtn') {
           return {
@@ -218,15 +167,6 @@ const ListTable = ({
 
 
 
-  function openModal(info: any) {
-
-    props?.setUserId(info);
-    props?.setModalType('update');
-    props?.setShowModal(!props?.showModal);
-
-
-  }
-
 
   const renderHeader = () => (
     <div>
@@ -244,8 +184,6 @@ const ListTable = ({
   function deleteUser(id: number) {
     axios.delete(`/api/v1/users/${id}`)
       .then((result: any) => {
-
-
         console.log("The result: ", result);
         setRefresh(true);
       }).catch((err: any) => {

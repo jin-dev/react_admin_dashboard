@@ -1,14 +1,7 @@
 import React from 'react';
 
 
-//Jin's Code
-
-// 3 pages for the homework
-const Main = React.lazy(() => import('./views/pages/Main/Main'));
 const AllUser = React.lazy(() => import('./views/adminMenu/AllUser'));
-const FeedbackList = React.lazy(
-  () => import('./views/employeeMenu/FeedbackList'),
-);
 
 
 interface Routes {
@@ -26,13 +19,12 @@ interface Routes {
 
 //routing for pages above
 const routes: Routes[] = [
-  
-  
+   
 {
   path: '/',
   exact: true,
   name: 'main',
-  component: Main,
+  component: AllUser,
 },
   {
     path: '/allUser',
@@ -49,21 +41,7 @@ const routes: Routes[] = [
     flag: true,
   },
 
-  {
-    path: '/FeedbackList',
-    name: 'Employee Menu',
-
-    depth: [
-      {
-        path: '/FeedbackList',
-        subtitle: 'User FeedBack',
-      },
-     
-    ],
-    title: 'Employee Menu',
-    flag: true,
-    component: FeedbackList,
-  },
+  
 
   
 ];
